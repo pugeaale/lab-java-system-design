@@ -37,6 +37,16 @@ public class Main {
         // then we test if we can reach an element with the key
         System.out.println(map.get("Julia"));//expect Student{name='Julia', grade=0}
 
+        Student student4 = new Student(90, "Maria");
+        Student student5 = new Student(91, "Ana");
+        Student student6 = new Student(92, "Anais");
+        map.put(student4.getName(), student4);
+        map.put(student5.getName(), student5);
+        map.put(student6.getName(), student6);
+        //TODO handle case when increaseGrades > 100 so we set to the max 100
+        Map<String, Student> updatedmap = increaseGrades(map);
+        System.out.println(updatedmap);
+
     }
 
     /**
@@ -47,5 +57,17 @@ public class Main {
         return new HashMap<>();
     }
 
+    private static Map<String, Student>  increaseGrades(Map<String, Student> map) {
+        for(Map.Entry<String, Student> entry : map.entrySet()) {
+            try {
+                Student s = entry.getValue();
+                s.setGrade((int)(s.getGrade() * 1.1));
+            } catch (IllegalArgumentException illegalArgumentException) {
+                System.out.println(illegalArgumentException.getMessage());
+            }
+
+        }
+        return map;
+    }
 
 }
