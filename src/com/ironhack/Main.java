@@ -1,5 +1,8 @@
 package com.ironhack;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -25,5 +28,24 @@ public class Main {
             System.out.println(illegalArgumentException.getMessage()); //expect grade must be > 0 && < 100
         }
 
+        //Create a Map with a key of the student's name (String) and a value of a Student object.
+        Map<String, Student> map = createStudentMap();
+        // we add 2 students
+        map.put(student.getName(),student);
+        map.put(student2.getName(), student2);
+        System.out.println(map);//expect {Julia=Student{name='Julia', grade=0}, John=Student{name='John', grade=100}}
+        // then we test if we can reach an element with the key
+        System.out.println(map.get("Julia"));//expect Student{name='Julia', grade=0}
+
     }
+
+    /**
+     * Create a Map with a key of the student's name (String) and a value of a Student object.
+     * @return
+     */
+    private static Map<String, Student> createStudentMap() {
+        return new HashMap<>();
+    }
+
+
 }
