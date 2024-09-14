@@ -43,7 +43,6 @@ public class Main {
         map.put(student4.getName(), student4);
         map.put(student5.getName(), student5);
         map.put(student6.getName(), student6);
-        //TODO handle case when increaseGrades > 100 so we set to the max 100
         Map<String, Student> updatedmap = increaseGrades(map);
         System.out.println(updatedmap);
 
@@ -60,8 +59,7 @@ public class Main {
     private static Map<String, Student>  increaseGrades(Map<String, Student> map) {
         for(Map.Entry<String, Student> entry : map.entrySet()) {
             try {
-                Student s = entry.getValue();
-                s.setGrade((int)(s.getGrade() * 1.1));
+                entry.getValue().increaseGrade();
             } catch (IllegalArgumentException illegalArgumentException) {
                 System.out.println(illegalArgumentException.getMessage());
             }

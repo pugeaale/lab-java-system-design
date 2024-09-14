@@ -28,6 +28,12 @@ public class Student {
         else throw new IllegalArgumentException("grade must be > 0 && < 100");
     }
 
+    public void increaseGrade() {
+        int updateGrade = (int)(getGrade() * 1.1);
+        if(updateGrade > 100) setGrade(100);
+        else setGrade(updateGrade);
+    }
+
     @Override
     public String toString() {
         return "Student{" +
